@@ -1,3 +1,17 @@
 ﻿{
-
+   "content_scripts": [ {
+      "css": [  ],
+      "js": [ "jquery.js", "hncollapse.js","summary.js" ],
+      "matches": [ "http://news.ycombinator.com/item?id=*", "http://news.ycombinator.com/threads?id=*", "https://news.ycombinator.com/item?id=*", "https://news.ycombinator.com/threads?id=*" ]
+   } ],
+   "description": "Collapses comments on Hacker News",
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "48": "icon48.png"
+   },
+   "manifest_version": 2,
+   "name": "Collapse2Summary",
+   "permissions": [ "http://news.ycombinator.com/item?id=*", "https://news.ycombinator.com/item?id=*" ],
+   "version": "1.2.1"
 }
