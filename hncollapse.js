@@ -511,7 +511,9 @@ $(function ()
 				    var splitted = allInnerText.split(/\s+/);
 				    var dict = {};
 				    $.each(splitted, function (key, value) {
-                        if ($.inArray(value, stop_words) === -1) {
+				        value = removeLastChar(value);
+				        value = removeFirstChar(value);
+				        if ($.inArray(value.toLowerCase(), stop_words) === -1) {
                             if (dict.hasOwnProperty(value)) {
                                 dict[value] += 1;
                             } else {
@@ -560,6 +562,25 @@ $(function ()
 			}
 		});
 });
+
+function removeLastChar(word) {
+    var chars = ['\'', '"', "."];
+    var lastChar = word.substring(word.length - 1);
+    if ($.inArray(chars,lastChar)>-1)
+    {
+        word = word.substring(0, word.length-1);
+    }
+    return word;
+}
+
+function removeFirstChar(word) {
+    var chars = ['\'', '"'];
+    var firstChar = word.charAt(0);
+    if ($.inArray(chars, firstChar) > -1) {
+        word = word.substring(1);
+    }
+    return word;
+}
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
