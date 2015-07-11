@@ -139,7 +139,7 @@ $(function ()
                             
 				        }
 				    });
-				    button.html('[+]<br/><span style="display: inline-block;height:' + maxHeightPercent + '%;border-radius: 3px;background:#ff6600;color:#000000">' + tagCloudString + '</span><br/>');
+				    button.html('[+] ('+collapsedComments.length+' comments)<br/><span style="display: inline-block;height:' + maxHeightPercent + '%;border-radius: 3px;background:#ff6600;color:#000000">' + tagCloudString + '</span><br/>');
 					if (isDeleted)
 					{
 						_this.parent().next().show();
