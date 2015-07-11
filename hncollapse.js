@@ -101,6 +101,10 @@ $(function ()
 				    $.each(splitted, function (key, value) {
 				        value = removeLastChar(value);
 				        value = removeFirstChar(value);
+				        var length = value.length;
+                        if (value[length - 1] === 's' && value[length - 2] === '\'') {
+                            value = value.substring(0, length - 2);
+                        }
 				        var stemmed = stemmer(value);
 				        if (window.stemmerDict.hasOwnProperty(stemmed)) {
 				            value = window.stemmerDict[stemmed];
@@ -123,15 +127,19 @@ $(function ()
                     sortable.sort(function (a, b) { return b[1] - a[1] });
 				    sortable = sortable.slice(0, 15);
 				    shuffle(sortable);
+				    var maxHeightPercent = 100;
 				    $.each(sortable, function (index, item) {
 				        var value = item[1];
 				        if (value > 1) {
 				            var percent = (value > 10) ? 10 + ((value - 10) / 10) : value;
+				            if ((50 + (percent * 100 / 5)) > maxHeightPercent) {
+				                maxHeightPercent = (50 + (percent * 100 / 5));
+				            }
 				            tagCloudString += '<span style="font-size:' + (50 + (percent * 100 / 5)) + '%">' + item[0] + '</span>&nbsp;';
                             
 				        }
 				    });
-					button.html('[+]<br/>' + tagCloudString);
+				    button.html('[+]<br/><span style="display: inline-block;height:' + maxHeightPercent + '%;border-radius: 3px;background:#ff6600;color:#000000">' + tagCloudString + '</span><br/>');
 					if (isDeleted)
 					{
 						_this.parent().next().show();
