@@ -168,7 +168,7 @@ $(function ()
 });
 
 function removeLastChar(word) {
-    var chars = ['\'', '"', ".",","];
+    var chars = ['\'', '"', ".", ",","?"];
     var lastChar = word.substring(word.length - 1);
     if ($.inArray(lastChar,chars)>-1)
     {
