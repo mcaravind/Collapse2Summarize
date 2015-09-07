@@ -91,7 +91,7 @@ $(function ()
 					}
 				    var allInnerText = '';
 				    for (var i = 0; i < collapsedComments.length; i++) {
-				        var textInFont = $(collapsedComments[i]).find('font').text();
+				        var textInFont = $(collapsedComments[i]).find('.comment').text();
 					    allInnerText += textInFont.slice(0,textInFont.lastIndexOf('reply'));
 					    collapsedComments[i].hide();
 				    }
